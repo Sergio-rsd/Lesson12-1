@@ -30,7 +30,7 @@ public class FirstFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        viewModel = new ViewModelProvider((MainActivity)requireActivity()).get(SwitchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(SwitchViewModel.class);
 
         firstSend = view.findViewById(R.id.first_send);
         firstName = view.findViewById(R.id.first_name);
@@ -38,7 +38,12 @@ public class FirstFragment extends Fragment {
 
         firstSend.setOnClickListener(v -> viewModel.firstSay(firstName.getText().toString()));
 
-        viewModel.getFirst().observe(requireActivity(), string -> firstResult.setText(string));
+        viewModel.getFirst().observe(requireActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(String string) {
+                firstResult.setText(string);
+            }
+        });
     }
 
 

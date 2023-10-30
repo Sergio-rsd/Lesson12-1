@@ -28,7 +28,7 @@ public class SecondFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider((MainActivity)requireActivity()).get(SwitchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(SwitchViewModel.class);
 
         secondSend = view.findViewById(R.id.second_send);
         secondName = view.findViewById(R.id.second_name);
